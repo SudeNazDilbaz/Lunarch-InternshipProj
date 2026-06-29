@@ -1,16 +1,12 @@
-# Lunarch
+# Lunarch Secure Uploader
 
-Secure digital workspace that combines encrypted file management, audit logging and security monitoring.
+Lunarch Secure Uploader is a Python-based security module designed to improve file upload safety in web applications.
 
-## Status
+## Project Status
+Planning phase
 
-👾 Planning Phase
-
-## Technologies
-
-- FastAPI
-- React
-- PostgreSQL
-- JWT
-- AES-256
-- Docker
+## Main Focus
+- Secure file validation
+- Filename sanitization
+- Path traversal prevention
+- Safe file storage
