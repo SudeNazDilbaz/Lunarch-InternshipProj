@@ -10,3 +10,12 @@ Planning phase
 - Filename sanitization
 - Path traversal prevention
 - Safe file storage
+
+## Project Structure
+
+The project is organized into separate modules to keep each security task independent and reusable.
+
+- validator.py
+- sanitizer.py
+- permissions.py
+- uploader.py
