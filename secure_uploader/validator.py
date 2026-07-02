@@ -11,9 +11,7 @@ DEFAULT_ALLOWED_EXTENSIONS = ["jpg", "jpeg", "png", "pdf"]
 
 
 def is_allowed_file(file_path, allowed_extensions=None):
-    """
-    Checks whether a file is allowed by using magic byte validation.
-    """
+    
     if allowed_extensions is None:
         allowed_extensions = DEFAULT_ALLOWED_EXTENSIONS
 
