@@ -1,29 +1,45 @@
-import os
 import re
+from pathlib import Path
+from typing import Union
 
-def clean_filename(filename):
-    
-    filename = filename.replace("../", "").replace("..\\", "")
-    filename = filename.replace("./", "").replace(".\\", "")
 
-    filename = re.sub(r"[^a-zA-Z0-9.\-_]", "_", filename)
+def clean_filename(filename: str) -> str:
+    """
+    Cleans a filename by removing path traversal expressions
+    and replacing unsafe characters with underscores.
+    """
+
+    filename = (
+        filename
+        .replace("../", "")
+        .replace("..\\", "")
+        .replace("./", "")
+        .replace(".\\", "")
+    )
+
+    filename = re.sub(r"[^a-zA-Z0-9._-]", "_", filename)
 
     filename = filename.strip(". ")
 
     if not filename:
-        filename = "safe_file"
+        return "safe_file"
 
     return filename
 
-def get_safe_path(upload_dir, filename):
-    
+
+def get_safe_path(upload_dir: Union[str, Path], filename: str) -> Path:
+    """
+    Generates a safe file path inside the upload directory.
+    Raises ValueError if path traversal is detected.
+    """
+
+    upload_dir = Path(upload_dir).resolve()
+
     safe_name = clean_filename(filename)
-    full_path = os.path.join(upload_dir, safe_name)
 
-    upload_dir_abs = os.path.abspath(upload_dir)
-    full_path_abs = os.path.abspath(full_path)
+    full_path = (upload_dir / safe_name).resolve()
 
-    if not full_path_abs.startswith(upload_dir_abs):
+    if upload_dir not in full_path.parents and full_path != upload_dir:
         raise ValueError("Invalid file path detected.")
 
-    return full_path_abs
+    return full_path
