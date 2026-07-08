@@ -8,7 +8,8 @@ def clean_filename(filename: str) -> str:
     Cleans a filename by removing path traversal expressions
     and replacing unsafe characters with underscores.
     """
-
+    filename = filename.strip()
+    
     filename = (
         filename
         .replace("../", "")
