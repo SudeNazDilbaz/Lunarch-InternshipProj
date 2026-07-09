@@ -8,8 +8,8 @@ The goal of this project is to develop a Python-based secure file upload module 
 - Magic byte checking
 - Filename sanitization
 - Path traversal prevention
-- File size control
-- Safe file storage
+- Safe file permission management
+- Secure file storage
 
 ## Security Focus
 The project focuses on reducing risks related to unsafe file uploads, such as malicious file extensions, MIME-type spoofing, path traversal attempts, and insecure file storage.
