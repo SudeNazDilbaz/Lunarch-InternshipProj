@@ -107,7 +107,8 @@ result = secure_upload(
 
 print(result)
 ```
-The module validates the uploaded file, sanitizes the filename, generates a safe upload path, copies the file into the upload directory, and applies safe file permissions.
+
+The complete example is also available in the `example.py` file.
 
 ---
 
